@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@babel/preset-react": "latest",
     "@react-native-community/eslint-config": "^3.2.0",
     "eslint": "^8.53.0",
     "prettier": "3.0.3"

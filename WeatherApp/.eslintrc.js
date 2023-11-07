@@ -17,18 +17,23 @@ module.exports = {
                 ".eslintrc.{js,cjs}"
             ],
             "parserOptions": {
-                "sourceType": "script"
+                "sourceType": "script",
+                "ecmafeatures": {
+                    "jsx": true
+                }
             }
         }
     ],
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
-        "parser": '@babel/eslint-parser',
-        "requireConfigFile": false, 
+        "presets": "@babel/preset-react",
+        "requireConfigFile": false,
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "@babel/plugin-syntax-jsx",
     ],
     "rules": {
         semi: ["error", "never"],
@@ -36,7 +41,7 @@ module.exports = {
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
         'no-use-before-define': [
             'error',
-            {functions: true, classes: true, variables: false},
+            { functions: true, classes: true, variables: false },
         ]
     }
 }
