@@ -6,6 +6,9 @@
 
 ## npm dependancies
 + linter : various ESLint cheese (to list)
-+ navigation, as I'm using expo : @react-navigation/native
++ navigation, as I'm using expo : 
+``npm install @react-navigation/native``
     + then : 
     ``npx expo install react-native-screens react-native-safe-area-context``
+    + navigation bottom tabs : 
+    ``npm install @react-navigation/bottom-tabs``
