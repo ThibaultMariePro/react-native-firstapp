@@ -1,7 +1,7 @@
 import React from "react";
 import CurrentWeather from '../screens/currentWeather';
 import UpcomingWeather from '../screens/upcomingWeather';
-import City from '../screens/City';
+import City from '../screens/city';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 

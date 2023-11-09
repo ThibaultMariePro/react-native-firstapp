@@ -12,3 +12,8 @@
     ``npx expo install react-native-screens react-native-safe-area-context``
     + navigation bottom tabs : 
     ``npm install @react-navigation/bottom-tabs``
++ geolocation : 
+``npx expo install expo-location``
++ hiding secretz (like api keys):
+``npm install -D react-native-dotenv``
+    + and then babel.config cheese

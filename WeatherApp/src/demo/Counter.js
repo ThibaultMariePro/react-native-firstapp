@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
 const Counter = () => {
@@ -6,6 +6,14 @@ const Counter = () => {
     const { container, title } = styles;
 
     const [count, setCount] = useState(0)
+    const [newCount, setNewCount] = useState(0)
+    
+    useEffect(() => {
+        console.log(`value is ${count}`) 
+        return () => {
+            console.log('useEffect clean up')
+        }
+    }, [count]) // only run when count changes
 
     return (
         <View style={container}>
@@ -18,6 +26,15 @@ const Counter = () => {
                 color={'green'}
                 title={'decrease'}
                 onPress={() => setCount(count - 1)} />
+            <Text style={title}>{`count ${newCount}`}</Text>
+            <Button
+                color={'red'}
+                title={'increase nc'}
+                onPress={() => setNewCount(newCount + 1)} />
+            <Button
+                color={'green'}
+                title={'decrease nc'}
+                onPress={() => setNewCount(newCount - 1)} />
         </View>
     )
 }
