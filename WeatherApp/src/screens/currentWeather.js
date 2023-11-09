@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import RowText from '../components/RowText'
 import { weatherType } from "../utilities/weatherType";
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ weatherData }) => {
   const {
     wrapper,
     container,
@@ -12,20 +12,35 @@ const CurrentWeather = () => {
     highLow,
     description,
     message,
-    temp,
+    tempStyles,
     feels
   } = styles;
+
+  const {
+    main: { temp, feels_like, temp_min, temp_max },
+    weather
+  } = weatherData
+
+  const weatherCondition = weather[0].main
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView style={[wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor }]}>
       <View style={container}>
-        <Feather name="sun" size={100} color="black" />
+        <Feather
+          name={weatherType[weatherCondition].icon}
+          size={100}
+          color="white" 
+        />
         <Text>Weather App</Text>
         <Text>By Skyler White YO</Text>
-        <Text style={temp}>6</Text>
-        <Text style={feels}>Feels like 5</Text>
+        <Text style={tempStyles}>
+          {temp}
+        </Text>
+        <Text style={feels}>
+          {`Feels like ${feels_like}`}
+          </Text>
         <RowText
-          msg1="High: 8"
-          msg2="Low: 4"
+          msg1={`High: ${temp_max}`}
+          msg2={`High: ${temp_min}`}
           containerStyles={highLowWrapper}
           msg1Styles={highLow}
           msg2Styles={highLow}
@@ -43,7 +58,6 @@ const CurrentWeather = () => {
     </SafeAreaView>
   )
 }
-
 const styles = StyleSheet.create({
   droidSafeArea: {
     flex: 1,
@@ -54,12 +68,12 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: 'orange',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  temp: {
+  tempStyles: {
     color: 'black',
     fontSize: 48,
   },
