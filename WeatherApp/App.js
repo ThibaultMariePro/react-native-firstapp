@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/components/Tabs';
+import ErrorItem from './src/components/ErrorItem';
 import { useGetWeather } from './src/hooks/useGetWeather';
-
-//api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-//418d98a374fc55f3122e1a0aae143b91
+import OurButton from './src/demo/OurButton';
+import Counter from './src/demo/Counter';
 
 const App = () => {
   const { container } = styles;
@@ -13,31 +13,27 @@ const App = () => {
 
   console.log(isLoading, errorMsg, weather)
 
-  if(weather && weather.list){
-    return (
-      <NavigationContainer>
-        <Tabs weather={weather} />
-      </NavigationContainer>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <View style={container}>
-        <ActivityIndicator
-          size={'large'}
-          color={'blue'}
-        />
-      </View>
-    )
-  }
+  // if (weather && weather.list && !isLoading) {
+  //   return (
+  //     <NavigationContainer>
+  //       <Tabs weather={weather} />
+  //     </NavigationContainer>
+  //   )
+  // }
 
   return (
     <View style={container}>
-      <ActivityIndicator
-        size={'large'}
-        color={'red'}
-      />
+      {/* <OurButton /> */}
+      {/* <Counter/> */}
+      {errorMsg ?
+        (
+          <ErrorItem />
+          ) : (
+          <ActivityIndicator
+            size={'large'}
+            color={'red'}
+          />
+        )}
     </View>
   )
 

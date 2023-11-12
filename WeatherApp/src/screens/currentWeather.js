@@ -21,26 +21,26 @@ const CurrentWeather = ({ weatherData }) => {
     weather
   } = weatherData
 
-  const weatherCondition = weather[0].main
+  const weatherCondition = weather[0]?.main
   return (
-    <SafeAreaView style={[wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor }]}>
+    <SafeAreaView style={[wrapper, { backgroundColor: weatherType[weatherCondition]?.backgroundColor }]}>
       <View style={container}>
         <Feather
-          name={weatherType[weatherCondition].icon}
+          name={weatherType[weatherCondition]?.icon}
           size={100}
           color="white" 
         />
         <Text>Weather App</Text>
         <Text>By Skyler White YO</Text>
         <Text style={tempStyles}>
-          {temp}
+          {`${temp}°`}
         </Text>
         <Text style={feels}>
           {`Feels like ${feels_like}`}
           </Text>
         <RowText
-          msg1={`High: ${temp_max}`}
-          msg2={`High: ${temp_min}`}
+          msg1={`High: ${temp_max}° `}
+          msg2={`Low: ${temp_min}°`}
           containerStyles={highLowWrapper}
           msg1Styles={highLow}
           msg2Styles={highLow}
@@ -48,8 +48,8 @@ const CurrentWeather = ({ weatherData }) => {
       </View>
       <View style={styles.bodyWrapper}>
         <RowText
-          msg1={'clear'}
-          msg2={weatherType['Clear'].message}
+          msg1={weather[0]?.description}
+          msg2={weatherType[weatherCondition]?.message}
           containerStyles={highLowWrapper}
           msg1Styles={description}
           msg2Styles={message}
