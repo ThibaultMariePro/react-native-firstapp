@@ -13,13 +13,13 @@ const App = () => {
 
   console.log(isLoading, errorMsg, weather)
 
-  // if (weather && weather.list && !isLoading) {
-  //   return (
-  //     <NavigationContainer>
-  //       <Tabs weather={weather} />
-  //     </NavigationContainer>
-  //   )
-  // }
+  if (weather && weather.list && !isLoading) {
+    return (
+      <NavigationContainer>
+        <Tabs weather={weather} />
+      </NavigationContainer>
+    )
+  }
 
   return (
     <View style={container}>
